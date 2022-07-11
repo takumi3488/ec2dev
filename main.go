@@ -170,9 +170,12 @@ func main() {
 	for i := 0; i < 60; i++ {
 		time.Sleep(time.Second * 2)
 		instance, err = GetInstances(context.TODO(), client, instanceID)
-		if err != nil && instance.State.Name == target {
+		if err == nil && instance.State.Name == target {
 			break
 		}
+	}
+	if err != nil {
+		panic(err)
 	}
 	fmt.Printf("Instance ID: %s\nState: %s\n", *instance.InstanceId, instance.State.Name)
 
