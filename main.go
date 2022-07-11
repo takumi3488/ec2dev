@@ -216,6 +216,6 @@ func main() {
 		)
 		ioutil.WriteFile(sconfp, []byte(out), os.ModePerm)
 
-		fmt.Printf("Run below command to connect vscode:\ncode --remote ssh-remote+%s\n", settings.Name)
+		fmt.Printf("You can open `%s` with Remote Development.", settings.Name)
 	}
 }
