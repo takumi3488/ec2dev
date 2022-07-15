@@ -91,7 +91,6 @@ type Settings struct {
 	Region     string
 	Name       string
 	Credential string
-	Port       string
 	User       string
 }
 
@@ -206,12 +205,10 @@ func main() {
 				out += "\n"
 			}
 		}
-		out += fmt.Sprintf("Host %s\n  User %s\n  HostName %s\n  LocalForward %s localhost:%s\n  IdentityFile %s\n  ServerAliveInterval 5\n  ExitOnForwardFailure yes\n",
+		out += fmt.Sprintf("Host %s\n  User %s\n  HostName %s\n  IdentityFile %s\n  ServerAliveInterval 5\n  ExitOnForwardFailure yes\n",
 			settings.Name,
 			settings.User,
 			*instance.PublicIpAddress,
-			settings.Port,
-			settings.Port,
 			settings.Credential,
 		)
 		ioutil.WriteFile(sconfp, []byte(out), os.ModePerm)
